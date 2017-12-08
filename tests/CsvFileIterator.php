@@ -1,6 +1,7 @@
 <?php
+namespace Tests;
 
-class CsvFileIterator implements Iterator
+class CsvFileIterator implements \Iterator
 {
     /**
      * @var resource

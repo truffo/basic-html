@@ -1,4 +1,5 @@
 <?php
+namespace Tests;
 
 use Behat\Mink\Session;
 use Behat\Mink\Driver\Goutte\Client as GoutteClient;

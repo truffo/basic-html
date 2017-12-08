@@ -1,5 +1,8 @@
 <?php
+namespace Tests\Html;
 
+use Tests\CsvFileIterator;
+use Tests\MinkTestCaseTrait;
 use Behat\Mink\Element\NodeElement;
 
 class DescriptionTest extends \PHPUnit_Framework_TestCase

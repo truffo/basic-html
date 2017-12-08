@@ -1,5 +1,8 @@
 <?php
+namespace Tests\Html;
 
+use Tests\CsvFileIterator;
+use Tests\MinkTestCaseTrait;
 
 class FormTest extends \PHPUnit_Framework_TestCase
 {

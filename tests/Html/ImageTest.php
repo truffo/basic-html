@@ -1,4 +1,8 @@
 <?php
+namespace Tests\Html;
+
+use Tests\CsvFileIterator;
+use Tests\MinkTestCaseTrait;
 
 
 /**
