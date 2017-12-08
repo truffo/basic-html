@@ -1,0 +1,31 @@
+{
+    "name": "truffo/html-basic-test",
+    "description": "Basic HTML test",
+    "require": {
+        "behat/mink": "^1.7",
+        "behat/mink-goutte-driver": "^1.2",
+        "behat/mink-selenium2-driver": "^1.3",
+        "behat/mink-zombie-driver": "^1.4",
+        "phpunit/phpunit": "^4.8"
+    },
+    "authors": [
+        {
+            "name": "Sylvain FIX",
+            "email": "sylvain.fix@gmail.com"
+        },
+        {
+            "name": "Léo Podechard",
+            "email": "leo.podechard@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "tests/"
+        }
+    },
+    "scripts": {
+        "clean": "rm -rf tmp/* && rm -rf build/*",
+        "seo": "phpunit -c phpunit.dist.xml --group seo",
+        "w3c": "phpunit -c phpunit.dist.xml --group w3c"
+    }
+}

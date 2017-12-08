@@ -1,0 +1,9 @@
+/.idea/*
+/vendor/
+/node_modules
+/data/*
+!/data/.gitkeep
+/build/*
+!/build/.gitkeep
+/tmp/*
+!/tmp/.gitkeep
