@@ -1,5 +1,6 @@
 {
     "name": "truffo/html-basic-test",
+    "license": "MIT",
     "description": "Basic HTML test",
     "require": {
         "behat/mink": "^1.7",
