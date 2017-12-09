@@ -46,4 +46,17 @@ class ConsultationTest extends \PHPUnit_Framework_TestCase
             }
         }
     }
+
+    /**
+     * @dataProvider urlProvider
+     *
+     * @link https://developer.mozilla.org/fr/docs/Web/HTML/Element/b
+     */
+    public function testNoBTag($url)
+    {
+        $page = $this->visit($url);
+        /** @var \Behat\Mink\Element\NodeElement[] $nodes */
+        $nodes = $page->findAll('css', 'b');
+        $this->assertCount(0, $nodes, "Il n'y aucun raison valable d'utiliser la balise <b>");
+    }
 }
