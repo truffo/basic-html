@@ -119,7 +119,8 @@ class StructureTest extends \PHPUnit_Framework_TestCase
     {
         $acceptableErrorList = [
             "Bad value noopenner for attribute rel on element a",
-            "Element hx:include not allowed as child of element div in this context"
+            "Element hx:include not allowed as child of element div in this context",
+            "role is unnecessary for element"
         ];
         $tmp = file_get_contents($url);
         $path = 'tmp'.DIRECTORY_SEPARATOR.time().'_'.md5($url);
@@ -131,12 +132,11 @@ class StructureTest extends \PHPUnit_Framework_TestCase
         $crawler = new Crawler();
         $crawler->addXmlContent($result);
         file_put_contents($pathXml, $result);
-        $errors = $crawler->filter('messages > error');
+        $errors = $crawler->filter('messages > *');
         $filteredError = [];
         foreach ($errors as $error) {
             $trimTextContent = trim($error->textContent);
             $acceptableError = false;
-
             foreach ($acceptableErrorList as $acceptableErrorMessage) {
                 if (mb_strpos($trimTextContent, $acceptableErrorMessage) !== false) {
                     $acceptableError = true;
