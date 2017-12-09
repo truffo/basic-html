@@ -1,6 +1,7 @@
 <?php
 namespace Tests\Html;
 
+use Symfony\Component\DomCrawler\Crawler;
 use Tests\CsvFileIterator;
 use Tests\MinkTestCaseTrait;
 
@@ -46,10 +47,10 @@ class StructureTest extends \PHPUnit_Framework_TestCase
     {
         $page = $this->visit($url);
 
-        $this->assertCount(0, $page->findAll('css', 'article > h1'), $url.' le h1 est positionée dans une section de type article.');
-        $this->assertCount(0, $page->findAll('css', 'section > h1'), $url.' le h1 est positionée dans une section de type section.');
-        $this->assertCount(0, $page->findAll('css', 'nav > h1'), $url.' le h1 est positionée dans une section de type nav.');
-        $this->assertCount(0, $page->findAll('css', 'aside > h1'), $url.' le h1 est positionée dans une section de type aside.');
+        $this->assertCount(0, $page->findAll('css', 'article h1'), $url.' le h1 est positionée dans une section de type article.');
+        $this->assertCount(0, $page->findAll('css', 'section h1'), $url.' le h1 est positionée dans une section de type section.');
+        $this->assertCount(0, $page->findAll('css', 'nav h1'), $url.' le h1 est positionée dans une section de type nav.');
+        $this->assertCount(0, $page->findAll('css', 'aside h1'), $url.' le h1 est positionée dans une section de type aside.');
     }
 
     /**
@@ -127,7 +128,7 @@ class StructureTest extends \PHPUnit_Framework_TestCase
         file_put_contents($path, $tmp);
         $cmd = 'java -Xss2048k -jar ./node_modules/vnu-jar/build/dist/vnu.jar --format xml "'.$path.'" 2>&1';
         $result = shell_exec($cmd);
-        $crawler = new Symfony\Component\DomCrawler\Crawler();
+        $crawler = new Crawler();
         $crawler->addXmlContent($result);
         file_put_contents($pathXml, $result);
         $errors = $crawler->filter('messages > error');
