@@ -5,8 +5,6 @@
         </testsuite>
     </testsuites>
     <logging>
-        <log type="json" target="build/logfile.json"/>
-        <log type="tap" target="build/logfile.tap"/>
         <log type="junit" target="build/logfile.xml" logIncompleteSkipped="false"/>
     </logging>
 </phpunit>
