@@ -83,26 +83,30 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-//    /**
-//     * @dataProvider urlProvider
-//     *
-//     * Optimiser temps de chargement de la page
-//     */
-//    public function testTailleReelImage($url)
-//    {
-//        $page = $this->visit($url);
-//        /** @var \Behat\Mink\Element\NodeElement[] $nodes */
-//        $nodes = $page->findAll('css', 'img');
-//        foreach ($nodes as $node) {
-//            $src = $node->getAttribute('src');
-//            $width = $node->getAttribute('width');
-//            $height = $node->getAttribute('height');
-//            list($realWidth, $realHeight, $mimeType) = getimagesize($src);
-//            $this->assertEquals($realWidth, $width, "Le width de l'image n'est pas bon" . $node->getOuterHtml());
-//            $this->assertEquals($realHeight, $height, "Le height de l'image n'est pas bon" . $node->getOuterHtml());
-//        }
-//        $this->assertTrue(true, 'Non applicable');
-//    }
+    /**
+     * @dataProvider urlProvider
+     *
+     * @group teste
+     *
+     * Optimiser temps de chargement de la page
+     */
+    public function testTailleReelImage($url)
+    {
+        $page = $this->visit($url);
+        $urlInfo = parse_url($url);
+        $baseUrl = $urlInfo['scheme'].'://'.$urlInfo['host'].'/';
+        /** @var \Behat\Mink\Element\NodeElement[] $nodes */
+        $nodes = $page->findAll('css', 'img');
+        foreach ($nodes as $node) {
+            $src = $node->getAttribute('src');
+            $width = $node->getAttribute('width');
+            $height = $node->getAttribute('height');
+            list($realWidth, $realHeight, $mimeType) = getimagesize($baseUrl.$src);
+            $this->assertEquals($realWidth, $width, "Le width de l'image n'est pas bon" . $node->getOuterHtml());
+            $this->assertEquals($realHeight, $height, "Le height de l'image n'est pas bon" . $node->getOuterHtml());
+        }
+        $this->assertTrue(true, 'Non applicable');
+    }
 
     /**
      * @dataProvider urlProvider
