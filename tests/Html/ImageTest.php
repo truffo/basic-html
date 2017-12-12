@@ -86,8 +86,6 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider urlProvider
      *
-     * @group teste
-     *
      * Optimiser temps de chargement de la page
      */
     public function testTailleReelImage($url)
@@ -101,7 +99,9 @@ class ImageTest extends \PHPUnit_Framework_TestCase
             $src = $node->getAttribute('src');
             $width = $node->getAttribute('width');
             $height = $node->getAttribute('height');
-            list($realWidth, $realHeight, $mimeType) = getimagesize($baseUrl.$src);
+            $imageSize = getimagesize($baseUrl.$src);
+            $realWidth = $imageSize[0];
+            $realHeight= $imageSize[1];
             $this->assertEquals($realWidth, $width, "Le width de l'image n'est pas bon" . $node->getOuterHtml());
             $this->assertEquals($realHeight, $height, "Le height de l'image n'est pas bon" . $node->getOuterHtml());
         }

@@ -40,5 +40,5 @@ Execution
 Pour lancer les tests
 
 ```
-vendor/bin/phpunit -c phpunit.dist.xmls
+vendor/bin/phpunit -c phpunit.dist.xml
 ```
