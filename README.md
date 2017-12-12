@@ -34,4 +34,11 @@ http://example.com/ma-page
 
 Attention, chaque ligne doit être suivi d'un saut de ligne pour être pris en compte.
 
+Execution
+============
 
+Pour lancer les tests
+
+```
+vendor/bin/phpunit -c phpunit.dist.xmls
+```
