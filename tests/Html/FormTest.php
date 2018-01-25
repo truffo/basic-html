@@ -58,9 +58,9 @@ class FormTest extends \PHPUnit_Framework_TestCase
     {
         $page = $this->visit($url);
         /** @var \Behat\Mink\Element\NodeElement[] $nodes */
-        $nodes = $page->findAll('css', 'button');
+        $nodes = $page->findAll('css', 'form button');
         foreach ($nodes as $node) {
-            $this->assertTrue($node->hasAttribute('name'), $url.' un bouton a forcément un name '.$node->getOuterHtml());
+            $this->assertTrue($node->hasAttribute('name'), $url.' un bouton dans un formulaire a forcément un name '.$node->getOuterHtml());
         }
     }
 }
