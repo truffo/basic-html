@@ -91,15 +91,18 @@ class ImageTest extends \PHPUnit_Framework_TestCase
     public function testTailleReelImage($url)
     {
         $page = $this->visit($url);
-        $urlInfo = parse_url($url);
-        $baseUrl = $urlInfo['scheme'].'://'.$urlInfo['host'].'/';
         /** @var \Behat\Mink\Element\NodeElement[] $nodes */
         $nodes = $page->findAll('css', 'img');
         foreach ($nodes as $node) {
             $src = $node->getAttribute('src');
+            if (mb_strpos('http', $src) === 0 || mb_strpos('//', $src)) {        
+                $urlInfo = parse_url($url);
+                $baseUrl = $urlInfo['scheme'].'://'.$urlInfo['host'].'/';
+                $src = $baseUrl.$src;
+            }
             $width = $node->getAttribute('width');
             $height = $node->getAttribute('height');
-            $imageSize = getimagesize($baseUrl.$src);
+            $imageSize = getimagesize($src);
             $realWidth = $imageSize[0];
             $realHeight= $imageSize[1];
             $this->assertEquals($realWidth, $width, "Le width de l'image n'est pas bon" . $node->getOuterHtml());
