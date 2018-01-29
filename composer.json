@@ -9,8 +9,7 @@
         "behat/mink-zombie-driver": "^1.4",
         "phpunit/phpunit": "^5.0"
     },
-    "authors": [
-        {
+    "authors": [{
             "name": "Sylvain FIX",
             "email": "sylvain.fix@gmail.com"
         },
@@ -26,7 +25,11 @@
     },
     "scripts": {
         "clean": "rm -rf tmp/* && rm -rf build/*",
-        "seo": "phpunit -c phpunit.dist.xml --group seo",
-        "w3c": "phpunit -c phpunit.dist.xml --group w3c"
+        "seo": "./bin/phpunit -c phpunit.dist.xml --group seo",
+        "w3c": "./bin/phpunit -c phpunit.dist.xml --group w3c"
+    },
+    "config": {
+        "bin-dir": "./bin"
     }
+
 }
