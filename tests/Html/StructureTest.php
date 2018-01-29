@@ -86,7 +86,7 @@ class StructureTest extends \PHPUnit_Framework_TestCase
      *
      * @link https://static.googleusercontent.com/media/www.google.fr/fr/fr/intl/fr/webmasters/docs/search-engine-optimization-starter-guide-fr.pdf
      */
-    public function testLeChampEstSuffisementCourt($url)
+    public function testLeH1EstAssezCourt($url)
     {
         $page = $this->visit($url);
 
@@ -143,9 +143,9 @@ class StructureTest extends \PHPUnit_Framework_TestCase
                 }
             }
             if (!$acceptableError) {
-                $filteredError[] = $error;
+                $filteredError[] = $error->textContent;
             }
         }
-        $this->assertCount(0, $filteredError, 'La page '.$url.' comportent '.count($filteredError).' erreurs HTML non acceptable.');
+        $this->assertCount(0, $filteredError, 'La page '.$url.' comportent '.count($filteredError)." erreurs HTML non acceptable.".print_r($filteredError, true));
     }
 }

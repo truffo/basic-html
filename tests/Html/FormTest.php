@@ -17,6 +17,10 @@ class FormTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Le formulaire a une action et une méthode.
+     *
+     * Ce point n'est pas obligatoire mais cela oblige à se poser la question sur l'objectif du formulaire.
+     *
      * @dataProvider urlProvider
      */
     public function testFormulaireAUneAction($url)
@@ -33,6 +37,8 @@ class FormTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Un formulaire doit avoir un bouton de soumission.
+     *
      * @dataProvider urlProvider
      */
     public function testFormulaireAUnBoutonDeSoumission($url)
@@ -50,6 +56,11 @@ class FormTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Chaque bouton présent dans un formulaire à un nom.
+     * 
+     * Ce n'est pas obligatoire mais cela simplifie le traitement coté serveur, 
+     * car le name est le nom utilisé coté serveur.
+     *
      * @dataProvider urlProvider
      *
      * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button

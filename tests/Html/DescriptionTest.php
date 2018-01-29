@@ -18,6 +18,8 @@ class DescriptionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * La meta description doit être présente.
+     *
      * @group seo
      *
      * @dataProvider urlProvider
@@ -37,6 +39,8 @@ class DescriptionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * La meta description doit avoir une taille comprise entre 80 et 300 caractères.
+     *
      * @group seo
      *
      * @dataProvider urlProvider
